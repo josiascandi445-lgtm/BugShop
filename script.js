@@ -1,43 +1,43 @@
 //aniimacao scroll
 
 const Observacao = new IntersectionObserver((entrada) => {
-    entrada.forEach ((entrada) =>{
-     if(entrada.isIntersecting){
-         entrada.target.classList.add('show')
-     }else{
-         entrada.target.classList.remove('show')
-     }
-    })
+  entrada.forEach((entrada) => {
+    if (entrada.isIntersecting) {
+      entrada.target.classList.add('show')
+    } else {
+      entrada.target.classList.remove('show')
+    }
   })
-  const elementos = document.querySelectorAll('.hiden')
-  
-  elementos.forEach((elementos) => Observacao.observe(elementos))
+})
+const elementos = document.querySelectorAll('.hiden')
 
-  
+elementos.forEach((elementos) => Observacao.observe(elementos))
+
+
 // dima
 let selectedDiamonds = 78;
 
-    function selectDiamonds(value) {
-      selectedDiamonds = value;
-      document.querySelectorAll('.card-recargas button').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      event.target.classList.add('active');
+function selectDiamonds(value) {
+  selectedDiamonds = value;
+  document.querySelectorAll('.card-recargas button').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  event.target.classList.add('active');
 }
 
 //enviar mensagem no zapp   
-    function sendToWhatsApp() {
-      const playerId = document.getElementById('playerId').value.trim();
-      if(!playerId){
-        alert('Insira o seu ID');
-        return;
-      }  
-      const message = `Olá Bug Shop! Quero fazer uma recarga de ${selectedDiamonds} diamantes. Aqui está o meu ID:${playerId} aguarde enquanto faço o pagamento`;
+function sendToWhatsApp() {
+  const playerId = document.getElementById('playerId').value.trim();
+  if (!playerId) {
+    alert('Insira o seu ID');
+    return;
+  }
+  const message = `Olá Bug Shop! Quero fazer uma recarga de ${selectedDiamonds} diamantes. Aqui está o meu ID:${playerId} aguarde enquanto faço o pagamento`;
 
-    const url = `https://wa.me/+244954448377?text=${encodeURIComponent(message)}`;
-     window.open(url, '_blank');
+  const url = `https://wa.me/+244954448377?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
 
-     
+
 }
 
 //assinaturas
@@ -133,3 +133,15 @@ function passeDeNivel() {
   window.open(url, '_blank');
 }
 
+
+
+//alerta personizado
+function alertaPersonalizado(mensagem) {
+  const alerta = document.getElementById('alerta');
+  document.getElementById('mensagemAlerta').innerText = mensagem;
+  alerta.style.display = 'block';
+}
+
+function fecharAlerta() {
+  document.getElementById('alerta').style.display = 'none';
+}
